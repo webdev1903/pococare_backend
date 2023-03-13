@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-// const Mailer = require("../configs/mail");
 
 const newToken = (user) => {
   const accessToken = jwt.sign({ user }, process.env.JWT_SECRET_KEY, {
@@ -13,7 +12,6 @@ const newToken = (user) => {
 };
 
 const User = require("../models/user.model");
-// console.log(User);
 
 const register = async (req, res) => {
   try {
@@ -26,7 +24,7 @@ const register = async (req, res) => {
     user = await User.create(req.body);
     return res.status(201).send(user);
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     return res.status(500).send(error.message);
   }
 };
